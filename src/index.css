@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cinematic Portfolio Design System - Anurag Sharma Pendyala */
+
+@layer base {
+  :root {
+    /* Light Theme - Arctic White Base */
+    --background: 0 0% 97%;
+    --foreground: 0 0% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 11%;
+
+    /* Brand Colors - Cinematic */
+    --primary: 354 76% 58%;        /* Scarlet Ember #E63946 */
+    --primary-foreground: 0 0% 97%;
+
+    --secondary: 0 0% 11%;          /* Deep Charcoal #1C1C1C */
+    --secondary-foreground: 0 0% 97%;
+
+    --accent: 279 59% 58%;          /* Electric Orchid #9D4EDD */
+    --accent-foreground: 0 0% 97%;
+
+    --highlight: 0 0% 88%;          /* Mist Silver #E0E0E0 */
+    --highlight-foreground: 0 0% 11%;
+
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 40%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 97%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 354 76% 58%;
+
+    --radius: 0.75rem;
+
+    /* Cinematic Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(354 76% 58%) 0%, hsl(279 59% 58%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 4%) 0%, hsl(0 0% 11%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(354 76% 58% / 0.2) 0%, transparent 70%);
+
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 40px hsl(354 76% 58% / 0.3);
+    --shadow-elegant: 0 10px 30px -10px hsl(0 0% 0% / 0.3);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.1);
+
+    /* Animation Timing */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    /* Dark Theme - Carbon Black Base */
+    --background: 0 0% 4%;           /* Carbon Black #0B0B0C */
+    --foreground: 0 0% 97%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 97%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 97%;
+
+    --primary: 354 76% 58%;          /* Scarlet Ember #E63946 */
+    --primary-foreground: 0 0% 97%;
+
+    --secondary: 0 0% 15%;           /* Slightly lighter than Deep Charcoal */
+    --secondary-foreground: 0 0% 97%;
+
+    --accent: 279 59% 58%;           /* Electric Orchid #9D4EDD */
+    --accent-foreground: 0 0% 97%;
+
+    --highlight: 0 0% 88%;           /* Mist Silver #E0E0E0 */
+    --highlight-foreground: 0 0% 11%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 97%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 354 76% 58%;
+
+    /* Enhanced Dark Mode Shadows */
+    --shadow-glow: 0 0 60px hsl(354 76% 58% / 0.4);
+    --shadow-elegant: 0 10px 40px -10px hsl(354 76% 58% / 0.3);
+    --shadow-card: 0 4px 30px hsl(354 76% 58% / 0.15);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+  }
+
+  /* Glass Morphism */
+  .glass {
+    background: hsl(var(--card) / 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+}
+
+@layer utilities {
+  /* Gradient Text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Hover Glow */
+  .hover-glow {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-glow:hover {
+    filter: drop-shadow(var(--shadow-glow));
+  }
+
+  /* Link Animation */
+  .link-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: hsl(var(--primary));
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+  }
+
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}
